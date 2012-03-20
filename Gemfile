@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+# Need our mobile app manager
+gem 'mobile_app_manager', :git => "git://github.com/mojojoseph/mobile_app_manager"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -37,4 +40,3 @@ gem 'capistrano'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'mobile_app_manager'

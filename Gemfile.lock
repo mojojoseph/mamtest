@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/mojojoseph/mobile_app_manager
+  revision: 7e70dbf14e2c9672269706bac12b5939571ff412
+  specs:
+    mobile_app_manager (0.0.1)
+      rails (~> 3.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,8 +66,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    mobile_app_manager (0.0.1)
-      rails (~> 3.2.2)
     multi_json (1.1.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -122,7 +127,7 @@ DEPENDENCIES
   capistrano
   coffee-rails (~> 3.2.1)
   jquery-rails
-  mobile_app_manager
+  mobile_app_manager!
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3

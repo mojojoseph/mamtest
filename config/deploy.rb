@@ -17,8 +17,8 @@ set :runner, "deploy"
 
 task :staging do
   set :user, "jbell"
-  set :use_sudo, true
-  set :domain, "localhost"
+  set :use_sudo, false
+  set :domain, "192.168.0.108"
   set :stage, :staging
   set :deploy_to, "~/web/apps/#{stage}/#{application}"
   role :app, domain
@@ -41,8 +41,8 @@ end
  
 namespace :deploy do
   task :start, :roles => :app do
-    run "chown -R nobody #{current_release}"
-    run "touch #{current_release}/tmp/restart.txt"
+#    run "chown -R nobody #{current_release}"
+#    run "touch #{current_release}/tmp/restart.txt"
   end
  
   task :stop, :roles => :app do
@@ -51,7 +51,11 @@ namespace :deploy do
  
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "chown -R nobody #{current_release}"
-    run "touch #{current_release}/tmp/restart.txt"
+#    run "chown -R nobody #{current_release}"
+#    run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  task :publish_ipa, :roles => :app do
+    puts "Publish"
   end
 end
