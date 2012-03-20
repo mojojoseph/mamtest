@@ -1,5 +1,9 @@
 
 
+set :default_env,  'staging'
+set :rails_env,     ENV['rails_env'] || ENV['RAILS_ENV'] || default_env
+set :extra_deploys, 'config/deployments/'
+
 #
 # Specify the RVM installation we want to use on the remote deployment
 # system
@@ -51,11 +55,12 @@ end
 
 #ROLES
  
+# todo cold deploy needs to create asset pipeline?
 namespace :deploy do
 
   desc "Start Application"
   task :start, :roles => :app do
-    run "cd #{current_release} && rails server -p3000 -d"
+    run "cd #{current_release} && RAILS_ENV=#{rails_env} rails server -p3000 -d"
   end
  
   task :stop, :roles => :app do
@@ -69,5 +74,12 @@ namespace :deploy do
 
   task :publish_ipa, :roles => :app do
     puts "Publish"
+  end
+end
+
+namespace :rake do 
+  desc "Run a task on a remote server"
+  task :invoke do 
+    run ("cd #{current_release} && RAILS_ENV=#{rails_env} rake ios:insert_record")
   end
 end

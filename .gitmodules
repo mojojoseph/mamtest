@@ -1,0 +1,6 @@
+[submodule "iOSLauncher"]
+	path = iOSLauncher
+	url = git@github.com:numerex/iOSLauncher
+[submodule "mobileapps/iOSLauncher"]
+	path = mobileapps/iOSLauncher
+	url = git@github.com:numerex/iOSLauncher
