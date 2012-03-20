@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mojojoseph/mobile_app_manager
-  revision: dab43a0979a896eaca3c08269cd8bb57fd12102d
+  revision: 691323f8fdde96bff548054387a48a20b9c293ee
   specs:
     mobile_app_manager (0.0.2)
       rails (~> 3.2.2)
