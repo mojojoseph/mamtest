@@ -1,15 +1,21 @@
 
+
+#
+# Specify the RVM installation we want to use on the remote deployment
+# system
+#
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require "bundler/capistrano"
 require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.2'
 set :rvm_type, :user
 
-#========================
-#CONFIG
-#========================
-set :application, "mamtest"
- 
+#
+# After the website is deployed want bundle install executed
+#
+require "bundler/capistrano"
+
+# Configuration
+set :application, "mamtest"                              # Application Name
 set :scm, :git
 set :git_enable_submodules, 1
 set :repository, "git@github.com:mojojoseph/mamtest"
@@ -18,10 +24,9 @@ set :ssh_options, { :forward_agent => true }
 set :runner, "deploy"
 #set :app_server, :passenger
 
-#========================
-#CUSTOM
-#========================
-
+#
+# Custom variables to set for staging and production environments
+#
 task :staging do
   set :user, "jbell"
   set :use_sudo, false
@@ -47,9 +52,10 @@ end
 #ROLES
  
 namespace :deploy do
+
+  desc "Start Application"
   task :start, :roles => :app do
-#    run "chown -R nobody #{current_release}"
-#    run "touch #{current_release}/tmp/restart.txt"
+    run "cd #{current_release} && rails server -p3000 -d"
   end
  
   task :stop, :roles => :app do
@@ -58,8 +64,7 @@ namespace :deploy do
  
   desc "Restart Application"
   task :restart, :roles => :app do
-#    run "chown -R nobody #{current_release}"
-#    run "touch #{current_release}/tmp/restart.txt"
+    run "touch #{current_release}/tmp/restart.txt"
   end
 
   task :publish_ipa, :roles => :app do
