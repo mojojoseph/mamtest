@@ -25,4 +25,4 @@ production:
   timeout: 5000
 
 staging:
-  production
+  :production
