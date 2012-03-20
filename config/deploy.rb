@@ -36,7 +36,7 @@ task :staging do
   set :use_sudo, false
   set :domain, "192.168.0.108"
   set :stage, :staging
-  set :deploy_to, "~/web/apps/#{stage}/#{application}"
+  set :deploy_to, "/home/jbell/web/apps/#{stage}/#{application}"
   role :app, domain
   role :web, domain
   role :db, domain, :primary => true
