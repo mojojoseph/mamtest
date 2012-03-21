@@ -34,9 +34,11 @@ set :runner, "deploy"
 task :staging do
   set :user, "jbell"
   set :use_sudo, false
-  set :domain, "192.168.0.108"
+#  set :domain, "192.168.0.108"
+  set :domain, "172.31.57.254"
   set :stage, :staging
   set :deploy_to, "/home/jbell/web/apps/#{stage}/#{application}"
+
   role :app, domain
   role :web, domain
   role :db, domain, :primary => true
@@ -83,3 +85,5 @@ namespace :rake do
     run ("cd #{current_release} && RAILS_ENV=#{rails_env} rake ios:insert_record")
   end
 end
+
+require 'mobile_app_manager/recipes'
